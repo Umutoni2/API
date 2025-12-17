@@ -1,8 +1,7 @@
 
-
 ---
 
-# API Testing with Postman – GitHub Gists API
+# API Testing with Postman –GitHub Gists API
 
 ---
 
