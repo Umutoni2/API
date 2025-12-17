@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "89de7276-e855-435a-a42a-7a6f41f5c0c0",
+		"name": "Api Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25792970",
+		"_collection_link": "https://blue-crater-246104.postman.co/workspace/Team-Workspace~083b1764-87a9-427a-886d-60c2febbce30/collection/25792970-89de7276-e855-435a-a42a-7a6f41f5c0c0?action=share&source=collection_link&creator=25792970"
+	},
+	"item": [
+		{
+			"name": "Post Gist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"id is successfully saved to environment\",\r",
+							"\r",
+							"function () {\r",
+							"\r",
+							"var jsonData = pm.response.json();     \r",
+							"pm.environment.set(\"id\", jsonData.id);     \r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"files\": {\r\n        \"rutaganira.txt\": {\r\n            \"content\": \"Welcome Rutaganira\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/gists",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"gists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Gist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/gists/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"gists",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Gist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"files\":{\r\n        \"sylvie.txt\":{\r\n            \"content\":\"Welcome back Sylvie\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/gists/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"gists",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Gist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/gists/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"gists",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
